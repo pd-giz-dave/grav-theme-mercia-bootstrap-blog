@@ -1,0 +1,49 @@
+# Setup stream to inherit files from bootstrap-blog
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/mercia-bootstrap-blog
+         - user/themes/bootstrap-blog
+# Just a copy from bootstrap-blog.yaml
+enabled: true
+cdn_enabled: false
+back_to_top_button: true
+fluid_container: false
+favicon:
+navbar:
+  image:
+  icon:
+  style: light
+  override_page_style: true
+  dropdown: true
+  sticky: false
+sidebar:
+  enabled: true
+  align: left
+  twitter:
+    enabled: true
+    user: twitter
+    height: 600
+    theme: light
+  about:
+    enabled: true
+    title: About me
+    content: Some text about you...
+    page:
+item:
+  featured_image: true
+  text_align: justify
+  show_prev_next: true
+  related_pages: true
+  category: category
+  tag: tag
+comments:
+  enabled: false
+  disqus_shortname:
+footer:
+  style: light
+  text: 'Bootstrap Blog is <i class="fas fa-code"></i> with <i class="fas fa-heart"></i> by <a href="http://ayozehd.com">Ayoze Hernández Díaz</a>'
+  legal:

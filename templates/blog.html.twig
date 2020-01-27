@@ -1,0 +1,42 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+    {# 24/01/20 DCN: Added archive browse of @self if archives_month param present#}
+    {% if uri.param("archives_month") %}
+      {% set collection = page.collection({'items':{'@taxonomy':{"category": page.header.content.taxonomy.category, "archives_month": uri.param("archives_month")}}}) %}
+    {% else %}
+      {% set collection = page.collection().visible %}
+    {%  endif %}
+
+    {% if theme_config.sidebar.enabled is not sameas(false) and page.header.sidebar.enabled is not sameas(false) %}
+        {% set sidebar = true %}
+    {% else %}
+        {% set sidebar = false %}
+    {% endif %}
+
+    {# 22/01/20 DCN: Don't want this-->include 'partials/showcase.html.twig' with { 'content':page.content } #}
+
+    <div class="container{% if theme_config.fluid_container %}-fluid{% endif %}">
+        {{ content }} {# 22/01/20 DCN: Added so can have DIY content #}
+        <div class="row">
+            <div class="col">
+                <div class="row items">
+                    {% for child in collection %}
+                        {% include 'partials/layouts/' ~ page.header.layout|defined('boxed') ~ '.html.twig' with {'parent': page, 'page': child } %}
+                    {% endfor %}
+                </div>
+                {% if config.plugins.pagination.enabled and collection.params.pagination %}
+                    {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+                {% endif %}
+            </div>
+            {% if sidebar %}
+                <div id="sidebar" class="col-12 col-md-4 {% if theme_config.sidebar.align == 'left' %}order-md-first{% endif %}">
+                    <div class="sidebar-content {% if theme_config.sidebar.border %}border-{{ theme_config.sidebar.border }}{% endif %}">
+                        {% include 'partials/sidebar.html.twig' with { 'blog':page } %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

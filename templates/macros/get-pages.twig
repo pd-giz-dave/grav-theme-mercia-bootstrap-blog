@@ -1,0 +1,19 @@
+{# History
+    27/01/20 DCN: Created
+#}
+{# Description
+    Get all the pages in the given context that are visible and accessable by the current user.
+    To be visible page.header.visible must be 'true'.
+    To be accessable the current user must satisfy all the page.header.access criteria.
+    Only pages with no access restrictions are accessable if no user is logged-in.
+    Result is in
+#}
+{# Usage
+    {% from 'macros/get-pages.twig' import getPages %}
+    ...
+    {% getPages(_context) %}
+    ...
+#}
+{% macro getPages(context) %}
+
+{% endmacro %}

@@ -1,0 +1,13 @@
+name: Mercia Bootstrap Blog
+version: 0.1.0
+description: Bootstrap-blog modified for Mercia Fellrunners site
+icon: rebel
+author:
+  name: Dave Nichols
+  email: pd.giz.dave@gmail.com
+homepage: https://github.com/pd-giz-dave/grav-theme-mercia-bootstrap-blog
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/pd-giz-dave/grav-theme-mercia-bootstrap-blog/issues
+readme: https://github.com/pd-giz-dave/grav-theme-mercia-bootstrap-blog/blob/develop/README.md
+license: MIT

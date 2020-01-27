@@ -1,0 +1,21 @@
+{#25/01/20 DCN: Called from breadcrumbs.html.twig to add edit button on end of breadcrumb#}
+{% if authorize('admin.pages') and not page.header.protected %}
+    {% if base_url == '' %}
+        {%  set _editUrl = '/' %}
+    {% else %}
+        {%  set _editUrl = base_url %}
+    {% endif %}
+    {% if page.url == '/' %}
+        {%  set _editUrl = _editUrl~'admin/pages/'~page.slug %}
+    {% else %}
+        {%  set _editUrl = _editUrl~'admin/pages'~page.url %}
+    {% endif %}
+    <li class="breadcrumb-item">
+        <a target="_blank" href="{{ _editUrl }}" itemprop="url">
+            <i class="fa fa-edit"></i>
+            <span itemprop="title">
+                Edit This Page
+            </span>
+        </a>
+    </li>
+{% endif %}
